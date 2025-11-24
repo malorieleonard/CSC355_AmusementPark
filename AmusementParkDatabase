@@ -15,10 +15,7 @@
 	<h1>Park Menu Database:</h1>
 	
 	<h2>View All Park Records:</h2>
-	<form method = "get" action = "retrieve_author.php">
-		<label for="title">Enter all or part of an author's name: </label>
-		<input type="text" name = "author" id = "author">
-		<input type="submit" name="submit" value="Submit" id = "submit">
+	
 	</form>
 	
 </body>
