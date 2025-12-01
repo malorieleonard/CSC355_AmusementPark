@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Rides Above Thrill Level</title>
+    <meta charset="utf-8">
+    <style>
+        label { display: block; float:left; width:20%; }
+        input { display: block; width: 20% }
+        #submit { width: 10%; margin-top: 2rem; margin-left: 20%; }
+    </style>
+</head>
+<body>
+
+<h2>Search Rides Above a Thrill Level</h2>
+
+<form method="get" action="get_thrill_rides.php">
+    <label for="thrill">Minimum Thrill Level:</label>
+    <input type="number" name="thrill" id="thrill" min="1" max="5" required>
+
+    <input type="submit" id="submit" value="Submit">
+</form>
+
+</body>
+</html>
