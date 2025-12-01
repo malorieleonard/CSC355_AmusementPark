@@ -12,11 +12,24 @@
 </head>
 <body>
 
-	<h1>Park Menu Database:</h1>
+	<h1>Amusement Park Database:</h1>
 	
 	<h2>View All Park Records:</h2>
+	<ul>
+		<li><a href="view_rides.php">View All Rides</a></li>
+		<li><a href="view_games.php">View All Games</a></li>
+		<li><a href="view_foodstands.php">View All Food Stands</a></li>
+		<li><a href="view_menuitems.php">View All Menu Items</a></li>
+		<li><a href="view_staff.php">View All Staff</a></li>
+		<li><a href="view_guests.php">View All Guests</a></li>
+	</ul>
 	
-	</form>
+	<h2>Search the Park Database:</h2>
+	<ul>
+		<li><a href="search_staffname.html">Search Staff by Name</a></li>
+		<li><a href="search_guestname.html">Search Guest by Name</a></li>
+		<li><a href="search_ridestatus.html">Search Rides by Status</a></li>
+	</ul>	
 	
 </body>
 </html>
