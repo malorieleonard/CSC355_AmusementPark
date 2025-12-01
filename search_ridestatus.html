@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--  Anna Knowles, Madison Barrier, Leighanna Valenzuela, Malorie Leonard  -->
+<head>
+    <title>Search Ride Statuses</title>
+	<meta charset ="utf-8"> 
+	<style>
+		label {display: block; float:left; width:10%;}
+		input {display: block; width: 20%}
+		#submit {width: 10%; margin-top: 2rem; margin-left: 10%;}
+	</style>
+</head>
+<body>
+
+	<h2>Search Rides by Status:</h2>
+	
+	<form method = "get" action = "search_ridestatus.php">
+		<label for="status">Select Ride Status: </label>
+		<select name="status" id="status">
+			<option value="Active">Active</option>
+			<option value="Inactive">Inactive</option>
+		</select>
+		<input type="submit" value="Submit">
+	</form>
+	
+</body>
+</html>
+	
