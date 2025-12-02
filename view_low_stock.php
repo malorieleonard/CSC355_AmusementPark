@@ -4,11 +4,11 @@ ini_set('display_errors', 1);
 
 require_once('../pdo_connect.php');
 
-
 try {
     $sql = "SELECT ItemName, StockQuantity 
             FROM MenuItem 
-            WHERE StockQuantity < (SELECT AVG(StockQuantity) FROM MenuItem)";
+            WHERE StockQuantity < 75 
+            ORDER BY StockQuantity ASC";
             
     $stmt = $dbc->query($sql);
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -28,8 +28,7 @@ try {
 </head>
 <body>
 
-    <a href="index.html">Back to Main Menu</a>
-    <h2>Low Stock Items</h2>
+    <h2>Critical Low Stock Items (Below 75)</h2>
 
     <?php if (!empty($results)) : ?>
         <table>
@@ -45,7 +44,7 @@ try {
             } ?>
         </table>
     <?php else: ?>
-        <p>No low stock items found.</p>
+        <p>No items are below stock level 75.</p>
     <?php endif; ?>
 
 </body>
