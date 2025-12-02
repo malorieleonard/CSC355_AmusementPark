@@ -1,17 +1,22 @@
 <?php
-ini_set('display_errors', 1);
-require_once('../pdo_connect.php'); 
 
-$sql = 'SELECT ThrillLevel, AVG(Capacity) AS AverageCapacity 
-        FROM Rides 
-        GROUP BY ThrillLevel 
-        HAVING AVG(Capacity) > 14';
+ini_set('display_errors', 1);
+
+
+require_once('../pdo_connect.php');
+
 
 try {
+    $sql = "SELECT ThrillLevel, AVG(Capacity) AS AverageCapacity 
+            FROM Rides 
+            GROUP BY ThrillLevel 
+            HAVING AVG(Capacity) > 14";
+
     $stmt = $dbc->query($sql);
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 } catch (PDOException $e) {
-    echo "Query Failed: " . $e->getMessage();
+    echo "Error: " . $e->getMessage();
     exit;
 }
 ?>
@@ -20,38 +25,27 @@ try {
 <html lang="en">
 <head>
     <title>Thrill Stats Report</title>
-    <meta charset ="utf-8"> 
-    <style>
-        body { font-family: sans-serif; padding: 20px; }
-        table { border-collapse: collapse; width: 100%; max-width: 600px; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
-    </style>
+    <meta charset="utf-8">
+    <style>table, th, td { border: 1px solid black; border-collapse: collapse; padding: 10px; }</style>
 </head>
 <body>
 
-    <p><a href="index.html">← Back to Main Menu</a></p>
-
-    <h2>Report: High Capacity Thrill Rides</h2>
-    <p><em>Thrill levels where the average capacity is greater than 14.</em></p>
+    <a href="index.html">Back to Main Menu</a>
+    <h2>High Capacity Thrill Rides</h2>
 
     <?php if (!empty($results)) : ?>
         <table>
-            <thead>
-                <tr>
-                    <th>Thrill Level</th>
-                    <th>Average Capacity</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach($results as $row) {
-                    echo "<tr>";
-                    echo "<td>" . $row['ThrillLevel'] . "</td>";
-                    // Using number_format to clean up decimals
-                    echo "<td>" . number_format($row['AverageCapacity'], 1) . "</td>";
-                    echo "</tr>";
-                } ?>
-            </tbody>
+            <tr>
+                <th>Thrill Level</th>
+                <th>Avg Capacity</th>
+            </tr>
+            <?php foreach($results as $row) {
+                echo "<tr>";
+                echo "<td>" . $row['ThrillLevel'] . "</td>";
+                // number_format cleans up decimals (e.g. 25.5)
+                echo "<td>" . number_format($row['AverageCapacity'], 1) . "</td>";
+                echo "</tr>";
+            } ?>
         </table>
     <?php else: ?>
         <p>No results found.</p>
