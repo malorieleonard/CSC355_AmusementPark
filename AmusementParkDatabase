@@ -27,8 +27,8 @@
 	
 	<h2>Search the Park Database:</h2>
 	<ul>
-		<li><a href="search_staffname.html">Search Staff by Name</a></li>
-		<li><a href="search_guestname.html">Search Guest by Name</a></li>
+		<li><a href="search_staff.html">Search Staff by Name</a></li>
+		<li><a href="search_guest.html">Search Guest by Name</a></li>
 		<li><a href="search_ridestatus.html">Search Rides by Status</a></li>
 	</ul>	
 	
