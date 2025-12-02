@@ -5,7 +5,7 @@
 	try {
 		require_once('../pdo_connect.php'); 
 		$sql = 'SELECT GuestID, DOB, LastName, FirstName
-				FROM Guests
+				FROM Guest
 				ORDER BY GuestID';
 
 		$stmt = $dbc->prepare($sql);
