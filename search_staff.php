@@ -1,35 +1,32 @@
 <?php
-	ini_set('display_errors', 1);
+ini_set('display_errors', 1);
 //Names: Anna Knowles, Madison Barrier, Leighanna Valenzuela, Malorie Leonard
 
-if (!isset($_GET['staffName']) || empty($_GET['staffName'])) {
-	echo "<h2>Please enter first or last name to search staff:</h2>";
-	exit;
-}
+require_once('../pdo_connect.php'); 
 
-$staffName = '%' . $_GET['staffName'] . '%';
+if (isset($_GET['staffName']) && !empty(trim($_GET['staffName']))) {
+	$staffName = '%' . trim($_GET['staffName']) . '%';
 
 	try {
-		require_once('../pdo_connect.php'); 
 		$sql = 'SELECT StaffID, AreaWorking, Position, FN, LN
 				FROM Staff
-				WHERE FirstName LIKE ? OR LastName Like ?
+				WHERE FN LIKE ? OR LN Like ?
 				ORDER BY StaffID';
 
 		$stmt = $dbc->prepare($sql);
-		$stmt->bindParam(1, $staffName);
-		$stmt->bindParam(2, $staffName);
-		$stmt->execute();	
-		$result = $stmt->fetchAll();
-		
+		$stmt->execute([$staffName, $staffName]);	
+		$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			
 	} catch (PDOException $e){
-		echo $e->getMessage();
+		echo "Database error!" . $e->getMessage();
 		exit;
-	}	
+	}
+}	
 		
 	
 	
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +34,9 @@ $staffName = '%' . $_GET['staffName'] . '%';
 	<meta charset ="utf-8"> 
 </head>
 <body>
-	<h2>Search Results: </h2>
+
+<h2>Search Results: </h2>
+<?php if (!empty($results)) : ?>
 	<table>
 		<tr>
 			<th>Staff ID</th>
@@ -46,15 +45,19 @@ $staffName = '%' . $_GET['staffName'] . '%';
 			<th>First Name</th>
 			<th>Last Name</th>
 		</tr>
-	<?php foreach($result as $row) {
-		echo "<tr>";
-		echo "<td>".$row['StaffID']."</td>";
-		echo "<td>".$row['AreaWorking']."</td>";
-		echo "<td>".$row['Position']."</td>";
-		echo "<td>".$row['FN']."</td>";
-		echo "<td>".$row['LN']."</td>";
-		echo "</tr>";
-	}?> 
+		<?php foreach($results as $row) {
+			echo "<tr>";
+			echo "<td>".$row['StaffID']."</td>";
+			echo "<td>".$row['AreaWorking']."</td>";
+			echo "<td>".$row['Position']."</td>";
+			echo "<td>".$row['FN']."</td>";
+			echo "<td>".$row['LN']."</td>";
+			echo "</tr>";
+		}?> 
 	</table>
+<?php else: ?>
+	<p>No results found. Try another name.</p>
+<?php endif; ?>
+
 </body>
 </html>
