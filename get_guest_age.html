@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Guest Age Lookup</title>
+    <style>
+        label { display:block; margin-top:1rem; }
+        input { width:200px; padding:5px; }
+        #submit { margin-top:1rem; padding:6px 12px; }
+    </style>
+</head>
+<body>
+<h2>Look up Guest Age:</h2>
+<form method="get" action="get_guest_age.php">
+    <label for="dob">Enter Date of Birth (YYYY-MM-DD):</label>
+    <input type="text" id="dob" name="dob" required>
+    <input type="submit" name="submit" id="submit" value="Submit">
+</form>
+</body>
+</html>
