@@ -22,9 +22,13 @@
 		<li><a href="view_menuitems.php">View All Menu Items</a></li>
 		<li><a href="view_staff.php">View All Staff</a></li>
 		<li><a href="view_guests.php">View All Guests</a></li>
-		<li><a href="view_low_stock.html">View Low Stock Report</a></li>
+		
+		<li><a href="view_low_stock.php">View Low Stock Report</a></li>
+		
 		<li><a href="get_guest_age.html">View Guests Age</a></li>
 		<li><a href="get_thrill_rides.html">View Thrill Rides</a></li>
+		
+		<li><a href="view_thrill_stats.php">View High Capacity Ride Stats</a></li>
 	</ul>
 	
 	<h2>Search the Park Database:</h2>
