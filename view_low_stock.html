@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Low Stock Alert</title>
+</head>
+<body>
+
+    <!-- PHP Echo: Header -->
+    <h2>Low Stock Alert (Items Below Average Stock)</h2>
+    <p><em>Demonstrates Subquery Requirement</em></p>
+
+    <!-- Container for PHP Logic Result -->
+    <div id="php-result"></div>
+
+    <script>
+       
+        const menuItems = [
+            { name: 'Classic Cheeseburger', qty: 150 }, { name: 'Double Bacon Burger', qty: 100 }, { name: 'Veggie Burger', qty: 50 },
+            { name: 'Chicken Tenders (4pc)', qty: 200 }, { name: 'Chicken Tenders (6pc)', qty: 150 }, { name: 'Jumbo Hot Dog', qty: 150 },
+            { name: 'Chili Cheese Dog', qty: 100 }, { name: 'Corn Dog', qty: 120 }, { name: 'BBQ Pulled Pork Sandwich', qty: 80 },
+            { name: 'Crispy Chicken Sandwich', qty: 100 }, { name: 'Large French Fries', qty: 300 }, { name: 'Cheese Fries', qty: 200 },
+            { name: 'Chili Cheese Fries', qty: 150 }, { name: 'Onion Rings', qty: 150 }, { name: 'Fried Pickles', qty: 100 },
+            { name: 'Kid’s Burger Meal', qty: 100 }, { name: 'Kid’s Nugget Meal', qty: 100 }, { name: 'Fountain Soda (Regular)', qty: 500 },
+            { name: 'Fountain Soda (Large)', qty: 500 }, { name: 'Chocolate Milkshake', qty: 150 },
+            { name: 'Funnel Cake', qty: 200 }, { name: 'Funnel Cake w/ Strawberry', qty: 150 }, { name: 'Jumbo Churro', qty: 300 },
+            { name: 'Cinnamon Sugar Pretzel', qty: 200 }, { name: 'Cotton Candy (Pink)', qty: 150 }, { name: 'Cotton Candy (Blue)', qty: 150 },
+            { name: 'Popcorn (Regular)', qty: 300 }, { name: 'Popcorn (Souvenir Bucket)', qty: 100 }, { name: 'Candy Apple', qty: 100 },
+            { name: 'Caramel Apple w/ Nuts', qty: 80 }, { name: 'Soft Serve Cone (Vanilla)', qty: 250 }, { name: 'Soft Serve Cone (Chocolate)', qty: 250 },
+            { name: 'Soft Serve Cone (Twist)', qty: 250 }, { name: 'Waffle Cone Sundae', qty: 150 }, { name: 'Banana Split', qty: 50 },
+            { name: 'Frozen Lemonade', qty: 200 }, { name: 'Blue Raspberry Slush', qty: 200 }, { name: 'Cherry Slush', qty: 200 },
+            { name: 'Root Beer Float', qty: 100 }, { name: 'Box of Popcorn Candy', qty: 150 },
+            { name: 'Cheese Pizza Slice', qty: 300 }, { name: 'Pepperoni Pizza Slice', qty: 300 }, { name: 'Sausage Pizza Slice', qty: 200 },
+            { name: 'Veggie Pizza Slice', qty: 150 }, { name: 'Whole Cheese Pizza', qty: 50 }, { name: 'Whole Pepperoni Pizza', qty: 50 },
+            { name: 'Garlic Knots (3pc)', qty: 200 }, { name: 'Garlic Knots (6pc)', qty: 150 }, { name: 'Cheesy Breadsticks', qty: 150 },
+            { name: 'Marinara Dipping Cup', qty: 500 }, { name: 'Meatball Sub', qty: 80 }, { name: 'Italian Sausage Sandwich', qty: 80 },
+            { name: 'Chicken Parmesan Sub', qty: 70 }, { name: 'Calzone (Cheese)', qty: 60 }, { name: 'Calzone (Pepperoni)', qty: 60 },
+            { name: 'Caesar Salad Side', qty: 100 }, { name: 'Caprese Salad', qty: 50 }, { name: 'Tiramisu Slice', qty: 80 },
+            { name: 'Cannoli', qty: 100 }, { name: 'Italian Soda', qty: 150 },
+            { name: 'Soft Taco (Beef)', qty: 200 }, { name: 'Soft Taco (Chicken)', qty: 200 }, { name: 'Hard Shell Taco (Beef)', qty: 200 },
+            { name: 'Hard Shell Taco (Chicken)', qty: 200 }, { name: 'Bean Burrito', qty: 150 }, { name: 'Beef Burrito Supreme', qty: 120 },
+            { name: 'Chicken Quesadilla', qty: 150 }, { name: 'Cheese Quesadilla', qty: 150 }, { name: 'Loaded Nachos', qty: 180 },
+            { name: 'Chips and Salsa', qty: 250 }, { name: 'Chips and Guacamole', qty: 200 }, { name: 'Taco Salad Bowl', qty: 100 },
+            { name: 'Rice and Beans Side', qty: 150 }, { name: 'Street Corn (Elote)', qty: 100 }, { name: 'Cinnamon Twists', qty: 200 },
+            { name: 'Sopapilla', qty: 100 }, { name: 'Horchata', qty: 120 }, { name: 'Jarritos (Mandarin)', qty: 100 },
+            { name: 'Jarritos (Lime)', qty: 100 }, { name: 'Mexican Cola', qty: 100 },
+            { name: 'Turkey Avocado Wrap', qty: 80 }, { name: 'Chicken Caesar Wrap', qty: 90 }, { name: 'Veggie Hummus Wrap', qty: 70 },
+            { name: 'Club Sandwich', qty: 60 }, { name: 'Garden Salad', qty: 100 }, { name: 'Greek Salad', qty: 80 },
+            { name: 'Fruit Cup (Melon Mix)', qty: 120 }, { name: 'Fruit Cup (Grape & Berry)', qty: 120 }, { name: 'Yogurt Parfait', qty: 100 },
+            { name: 'Bagel w/ Cream Cheese', qty: 150 }, { name: 'Blueberry Muffin', qty: 100 }, { name: 'Chocolate Chip Muffin', qty: 100 },
+            { name: 'Granola Bar', qty: 200 }, { name: 'Protein Box', qty: 50 }, { name: 'Iced Coffee', qty: 150 },
+            { name: 'Hot Coffee', qty: 150 }, { name: 'Hot Tea', qty: 100 }, { name: 'Bottled Water', qty: 500 },
+            { name: 'Orange Juice', qty: 100 }, { name: 'Apple Juice', qty: 100 }
+        ];
+
+  
+        const totalStock = menuItems.reduce((sum, item) => sum + item.qty, 0);
+        const average = totalStock / menuItems.length;
+
+        
+        const lowStockItems = menuItems.filter(item => item.qty < average);
+
+        
+        const outputDiv = document.getElementById("php-result");
+
+        if (lowStockItems.length > 0) {
+            let html = "<table border='1' style='color: red;'>";
+            html += "<tr><th>Item Name</th><th>Stock Quantity</th></tr>";
+            
+            lowStockItems.forEach(item => {
+                html += `<tr><td>${item.name}</td><td>${item.qty}</td></tr>`;
+            });
+            
+            html += "</table>";
+            outputDiv.innerHTML = html;
+        } else {
+            outputDiv.innerHTML = "All items are stocked above average levels.";
+        }
+    </script>
+
+</body>
+</html>
