@@ -28,7 +28,7 @@ include 'AmusementParkDatabase.php';
             <th>Average Capacity</th>
         </tr>
         <?php
-        // YOUR QUERY: Aggregate with GROUP BY and HAVING
+
         $sql = "SELECT ThrillLevel, AVG(Capacity) AS AverageCapacity 
                 FROM Rides 
                 GROUP BY ThrillLevel 
