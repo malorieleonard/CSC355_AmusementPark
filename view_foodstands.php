@@ -39,7 +39,7 @@
 	<?php foreach($result as $row) {
 		echo "<tr>";
 		echo "<td>".$row['FoodStandID']."</td>";
-		echo "<td>".$row['CusineType']."</td>";
+		echo "<td>".$row['CuisineType']."</td>";
 		echo "<td>".$row['StandName']."</td>";
 		echo "<td>".$row['OpenTime']."</td>";
 		echo "<td>".$row['ClosingTime']."</td>";
