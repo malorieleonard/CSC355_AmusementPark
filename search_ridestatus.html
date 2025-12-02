@@ -12,16 +12,17 @@
 </head>
 <body>
 
-	<h2>Search Rides by Status:</h2>
+<h2>Search Rides by Status:</h2>
 	
-	<form method = "get" action = "search_ridestatus.php">
-		<label for="status">Select Ride Status: </label>
-		<select name="status" id="status">
-			<option value="Active">Active</option>
-			<option value="Inactive">Inactive</option>
-		</select>
-		<input type="submit" value="Submit">
-	</form>
+<form method = "get" action = "search_ridestatus.php">
+	<label for="status">Select Ride Status: </label>
+	<select name="status" id="status">
+		<option value="Open">Open</option>
+		<option value="Closed">Closed</option>
+		<option value="Maintenance">Maintenance</option>
+	</select>
+	<input type="submit" value="Submit">
+</form>
 	
 </body>
 </html>
