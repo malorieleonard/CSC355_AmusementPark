@@ -22,13 +22,23 @@
 		<li><a href="view_menuitems.php">View All Menu Items</a></li>
 		<li><a href="view_staff.php">View All Staff</a></li>
 		<li><a href="view_guests.php">View All Guests</a></li>
-		
+		<li><a href="StaffToRides.php">View Which Staff Members Work Which Rides</a></li>
+		<li><a href="Staff_Stands_IDs.php">View Which Staff Members Work Which Food Stands</a></li>
+		<li><a href="GamePlayer.php">View Guests Game Plays</a></li>
+		<li><a href="GuestRiderRides.php">View Guests Riding Rides</a></li>
+		<li><a href="ViewMaximumHeightRide.php">View Maximum Required Rider Information</a></li>
+		<li><a href="ViewMinimumHeightRide.php">View Minimum Required Rider Information</a></li>
+		<li><a href="ViewNumberOfSalesPerStand.php	">View Sales Per Food Stand</a></li>
+		<li><a href="ViewVisitCountDates.php">View Number of Guests Per Day</a></li>
+	
 		<li><a href="view_low_stock.php">View Low Stock Report</a></li>
 		
 		<li><a href="get_guest_age.html">View Guests Age</a></li>
 		<li><a href="get_thrill_rides.html">View Thrill Rides</a></li>
 		
 		<li><a href="view_thrill_stats.php">View High Capacity Ride Stats</a></li>
+		<li><a href="ViewNumberOfSalesPerStand.php	">View Sales Per Food Stand</a></li>
+		<li><a href="ViewVisitCountDates.php">View Number of Guests Per Day</a></li>
 	</ul>
 	
 	<h2>Search the Park Database:</h2>
