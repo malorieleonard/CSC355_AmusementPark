@@ -1,8 +1,8 @@
-<?php
-	ini_set ('error_reporting', 1); //Turns on error reporting - remove once everything works.
-	
+<?php	
+//Names: Anna Knowles, Madison Barrier, LeighAnna Valenzuela, Malorie Leonard
 	try{
 		require_once('../pdo_connect.php'); //Connect to the database
+		//SQL Query
 		$sql = 'SELECT MenuItem.MenuItemID, MenuItem.ItemName, 
                 COUNT(Purchase.GuestID) AS PurchaseCount 
                 FROM Purchase 
@@ -22,7 +22,7 @@
 	<meta charset ="utf-8"> 
 </head>
 <body>
-
+<!-- Information Gathered to be Used-->
 <h2>Menu Item Purchase Count Results: </h2>
 <?php if (!empty($results)) : ?>
 	<table>
@@ -31,6 +31,7 @@
 			<th>Item Name</th>
 			<th>Purchase Counr</th>
 		</tr>
+		<!-- Loop Through the Results-->
 		<?php foreach($results as $row) {
 			echo "<tr>";
 			echo "<td>".$row['MenuItemID']."</td>";
